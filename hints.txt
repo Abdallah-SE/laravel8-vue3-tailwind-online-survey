@@ -1,0 +1,90 @@
+composer create-project laravel/laravel online-survey --prefer-dist
+npm init vite vue  --------------------------(in powershell)
+then cd /vue
+npm install 
+npm run dev
+
+inside the vue path in cmd
+npm install -S vuex@next
+
+---------------------tailwindcss-----------------------------
+inside the vue path in cmd
+npm install -D tailwindcss postcss autoprefixer
+error with npx tailwindcss init
+so add tailwind.config.js and postcss config manual
+will work
+
+npm install @headlessui/vue @heroicons/vue @tailwindcss/forms -S
+npm i -S vue-router@next
+-------------------------------
+php artisan make:model Survey -m
+php artisan make:model SurveyQuestion -m
+php artisan make:model SurveyAnswer -m
+php artisan make:model SurveyQuestionAnswer -m
+
+to clear the session in the console of the browser
+sessionStorage.clear
+
+axios vs fetch
+axios reduce dupplications for same headers and json data passed to the url
+fetch example -------------------------------------------
+register( {commit} , user){
+            let te = JSON.stringify(user);
+            console.log(te);
+            return fetch('http://localhost:8000/api/register', {
+                headers :{
+                    "Content-Type": "application/json",
+                    Accept : "application/json"
+                },
+                method : "Post",
+                body : JSON.stringify(user)
+            })
+                .then( (res) => res.json() )
+                .then((res) => {
+                    commit('setUser', res);
+                    return res;
+                })
+        }
+-----------------------------------------------------
+in vue folder
+npm install -S axios
+npm i -S uuid
+---------------------
+php artisan make:controller AuthController
+
+php artisan make:controller SurveyController --model=Survey --api --requests
+php artisan make:resource SurveyResource
+
+composer require spatie/laravel-sluggable
+
+-------------------------------------------
+php artisan make:migration add_image_column_to_surveys_table
+edit the file then
+php artisan migrate
+
+edit the file again-------------undone to one step in migration
+
+php artisan migrate:rollback    
+php artisan migrate
+
+----------required-present-filled---------(usually it's important in dynamic forms with js)
+required the input field in all cases
+present the input field if you delete this field from the form will occur error-no error when make it blank while submitting the form
+filled the input field if you delet it from the form no errors occur but if you still have this field in the form must write in it after submitting
+----------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------hints about one to many relationship------------------
+survey one ---to--> questions Many
+in sql and migration file we put the survey_id in the question table or migration file but in laravel we put the function to get the questions in the suvery model with hasMany() and in the question model belongsTo()
+------------------------------------------------------------------------------------------
+
+php artisan make:resource SurveyQuestionResource
+----------------------------------------------------------
+php artisan make:request StoreSurveyAnswerRequest
+
+---------------------------Dashboard-------------------
+php artisan make:controller DashboardController
+php artisan make:resource SurveyAnswerResource
+---------------------------End Dashboard-----------------
+use svg in vue 3 and vite 2
+https://github.com/vuetter/vite-plugin-vue-svg
+----------------------------------------------------
